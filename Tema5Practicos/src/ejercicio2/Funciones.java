@@ -1,12 +1,22 @@
 package ejercicio2;
 
-import java.util.Scanner;
 
 public class Funciones {
 
+	/**
+	 * Atributo para guardar el valor de la carta
+	 */
 	static int numero;
+	
+	/**
+	 * Atributo para guardar la puntuacion de los jugadores
+	 */
 	static float jugador;
 
+	/**
+	 * En este metodo se genera la carta en forma de String de forma aleatoria
+	 * @return La carta en forma de String
+	 */
 	static String Carta() {
 		String carta = "";
 		int palo;
@@ -63,6 +73,10 @@ public class Funciones {
 		return carta;
 	}
 
+	/**
+	 * En este metodo se suma el valor de la carta a la puntuacion
+	 * @return El nuevo valor de la puntuacion
+	 */
 	static float suma() {
 		
 		if (numero < 8) {
@@ -73,6 +87,11 @@ public class Funciones {
 		return jugador;
 	}
 	
+	/**
+	 * Este metodo recoge las respuestas y ejecuta a raiz de ellas
+	 * @param respuesta del jugador
+	 * @return El valor de la puntuacion
+	 */
 	static float pedirCartas(String respuesta) {
 		
 		float suma = 0;
@@ -81,28 +100,33 @@ public class Funciones {
 			System.out.println("Ha sacado: ");
 			System.out.println(Funciones.Carta());
 			suma = Funciones.suma();
-			
-			System.out.println("¿Desea sacar otra carta?");
-			
-		} else if (respuesta.equals("N")) {
-			System.out.println("Se acabo su turno");
+	
 		} else {
 			System.out.println("Respuesta incorrecta. Introduzca [S] o [N]");
 		}
 		
+		
 		return suma;
 	}
 
+	/**
+	 * Este metodo indica quien gano o si empataron
+	 * @param jugador1
+	 * @param jugador2
+	 */
 	static void Ganador(float jugador1, float jugador2) {
 		jugador1 -= 7.5;
 		jugador2 -= 7.5;
 		
-		Math.abs(jugador1);
-		Math.abs(jugador2);
-		
-		if (jugador1 == 0 && jugador2 == 0) {
+		if (jugador1 == jugador2) {
 			System.out.println("Empate");
-		} else if (jugador1 < jugador2) {
+		}else if (jugador1 > 0 && jugador2 > 0) {
+			System.out.println("Empate");
+		} else if (jugador1 > 0) {
+			System.out.println("Gana jugador 2");
+		} else if (jugador2 > 0) {
+			System.out.println("Gana jugador 1");
+		} else if (jugador1 > jugador2) {
 			System.out.println("Gana jugador 1");
 		} else {
 			System.out.println("Gana jugador 2");
